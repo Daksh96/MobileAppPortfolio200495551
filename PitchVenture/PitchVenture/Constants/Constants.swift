@@ -8,9 +8,17 @@
 
 import Foundation
 import UIKit
+import StoreKit
 
 let appDel = UIApplication.shared.delegate as! AppDelegate
 //let sceneDel = UIApplication.shared.delegate as! SceneDelegate
+
+enum IAPManagerError: Error {
+    case noProductIDsFound
+    case noProductsFound
+    case paymentWasCancelled
+    case productRequestFailed
+}
 
 enum DeviceType: String {
     case iOS = "iPhone"
@@ -87,9 +95,14 @@ struct Constants {
         
         static let kApp_Blue_Color = UIColor(red: 42.0/255.0, green: 172.0/255.0, blue: 150.0/255.0, alpha: 1.0)
         
+        static let kApp_Blue_Color_Sponsored = UIColor(red: 251.0/255.0, green: 219.0/255.0, blue: 88.0/255.0, alpha: 1.0)
+        
+        static let kApp_Grey_Color = UIColor(red: 222.0/255.0, green: 222.0/255.0, blue: 222.0/255.0, alpha: 1.0)
+        
         static let kTEXTFIELD_PLACEHOLDER_COLOR = UIColor(red: 186.0/255.0, green: 187.0/255.0, blue: 188.0/255.0, alpha: 1.0)
         
         static let kTextFieldBorderColor = UIColor(red: 231.0/255.0, green: 231.0/255.0, blue: 231.0/255.0, alpha: 1.0)
+        
         
     }
     
@@ -105,7 +118,8 @@ struct Constants {
     
     static let kKeyboardDistanceFromTextField: CGFloat = 20.0
  
-    static let googleClientId = "75832076040-3h9occi19llgbuu2air0iialqu50up44.apps.googleusercontent.com"
+    //static let googleClientId = "75832076040-3h9occi19llgbuu2air0iialqu50up44.apps.googleusercontent.com"
+    static let googleClientId = "1062304744018-6nv7hnqio29vokcv8s009regcqp82jva.apps.googleusercontent.com"
     
     static let reversedGoogleClientId = "75832076040-3h9occi19llgbuu2air0iialqu50up44.apps.googleusercontent.com"
 }
