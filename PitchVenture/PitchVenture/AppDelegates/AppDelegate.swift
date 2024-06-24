@@ -9,6 +9,9 @@
 import UIKit
 import SVProgressHUD
 import GoogleSignIn
+import Firebase
+import GoogleMobileAds
+import FirebaseAnalytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         setRootViewController()
         setupKeyboardManager()
         
@@ -29,6 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           }
         }
         
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+//        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+//          AnalyticsParameterItemID: "id-\(title!)",
+//          AnalyticsParameterItemName: title!,
+//          AnalyticsParameterContentType: "cont",
+//        ])
         return true
     }
 
@@ -59,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // If not handled by this app, return false.
       return false
     }
+    
 }
 
 
